@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Белых Юрий — Дизайн интерьеров и комплектация | Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefcf8;
+            color: #2c2b28;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #c49a6c;
+            padding-left: 20px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid #eae6df;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2c2b28;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #2c2b28;
+            color: #2c2b28;
+        }
+
+        .btn-outline:hover {
+            background: #2c2b28;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #c49a6c;
+            transform: translateY(-2px);
+        }
+
+        /* навигация + аватар */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #e9e2d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid #c49a6c;
+            transition: 0.2s;
+        }
+
+        .avatar-container:hover {
+            opacity: 0.85;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            font-size: 28px;
+            font-weight: 500;
+            color: #7c6e5d;
+        }
+
+        .upload-avatar-input {
+            display: none;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+            color: #2c2b28;
+        }
+
+        .logo span {
+            color: #c49a6c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c2b28;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #c49a6c;
+        }
+
+        /* hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            padding: 20px 0 20px;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: #e9e2d9;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #4a4742;
+            margin: 24px 0 32px;
+            max-width: 90%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .stat {
+            font-weight: 600;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c49a6c;
+        }
+
+        /* портфолио сетка */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: all 0.25s ease;
+            border: 1px solid #f0ebe4;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            border-color: #e2d6cb;
+        }
+
+        .project-img {
+            background: #d9cec0;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7c6e5d;
+            font-size: 0.9rem;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .project-cat {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c49a6c;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* клиентский поток */
+        .client-flow {
+            background: #f5f1ea;
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .flow-text {
+            flex: 2;
+        }
+
+        .flow-highlight {
+            flex: 1;
+            background: white;
+            border-radius: 32px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+
+        .contact-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #8e897f;
+            font-size: 0.85rem;
+            border-top: 1px solid #eae6df;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.8rem; }
+            .section { padding: 50px 0; }
+            .hero-content p { max-width: 100%; }
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .nav-left { width: 100%; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <div class="nav-left">
+            <!-- загружаемая аватарка -->
+            <div class="avatar-container" id="avatarContainer" onclick="document.getElementById('avatarInput').click()">
+                <div class="avatar-placeholder" id="avatarPlaceholder">Ю</div>
+                <img id="avatarImg" src="" alt="Avatar" style="display: none;">
+            </div>
+            <input type="file" id="avatarInput" class="upload-avatar-input" accept="image/jpeg,image/png,image/jpg">
+            <div class="logo">Белых <span>Юрий</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#portfolio">Портфолио</a>
+            <a href="#clients">Клиенты</a>
+            <a href="#contact">Контакты</a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero секция -->
+<div class="container">
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Дизайнер интерьеров | Комплектация</div>
+            <h1>Белых Юрий<br>Дизайн и комплектация интерьеров</h1>
+            <p>Создаю функциональные и эстетичные пространства. Полный цикл: от концепции до реализации. Постоянный поток клиентов, готов к сотрудничеству с производителями и частными заказчиками.</p>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number">120+</span><br>реализованных объектов</div>
+                <div class="stat"><span class="stat-number">95%</span><br>постоянных заказчиков</div>
+                <div class="stat"><span class="stat-number">15+</span><br>партнёров-производителей</div>
+            </div>
+            <div style="margin-top: 32px;">
+                <a href="#contact" class="btn">Обсудить сотрудничество</a>
+                <a href="#portfolio" class="btn btn-outline" style="margin-left: 16px;">Портфолио</a>
+            </div>
+        </div>
+        <div style="flex:0.8; background: #e9e2d9; border-radius: 32px; padding: 20px; text-align: center;">
+            <svg width="200" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="50" width="160" height="80" rx="16" fill="#D9CEC0" stroke="#2C2B28" stroke-width="2"/>
+                <rect x="50" y="70" width="40" height="30" rx="6" fill="#C49A6C" />
+                <rect x="110" y="70" width="40" height="30" rx="6" fill="#C49A6C" />
+                <rect x="40" y="115" width="120" height="12" rx="6" fill="#2C2B28" />
+                <circle cx="55" cy="135" r="8" fill="#2C2B28" />
+                <circle cx="145" cy="135" r="8" fill="#2C2B28" />
+                <path d="M70 30 L100 15 L130 30 L130 45 L100 60 L70 45Z" fill="#C49A6C" stroke="#2C2B28" stroke-width="1.5"/>
+                <text x="85" y="45" font-size="9" fill="white" font-weight="bold">диван</text>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- Портфолио (примеры) -->
+<div class="container" id="portfolio">
+    <div class="section">
+        <h2>Избранные проекты</h2>
+        <p style="margin-bottom: 8px;">Интерьеры жилых и общественных пространств, разработка мебели, комплектация под ключ.</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="20" y="30" width="40" height="30" rx="6" fill="#C49A6C" /><circle cx="35" cy="60" r="5" fill="#2C2B28"/><circle cx="45" cy="60" r="5" fill="#2C2B28"/></svg>
+                </div>
+                <div class="project-info">
+                    <div class="project-cat">Квартира 110 м² · ЖК «Атмосфера»</div>
+                    <h3>Современный минимализм</h3>
+                    <p>Полная комплектация, разработка встроенной мебели, подбор отделки и света. Реализовано за 4 месяца.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M25,40 L40,25 L55,40 L55,60 L40,68 L25,60Z" fill="#D9CEC0" stroke="#2C2B28"/><rect x="35" y="48" width="10" height="12" fill="#C49A6C"/></svg>
+                </div>
+                <div class="project-info">
+                    <div class="project-cat">Загородный дом · 210 м²</div>
+                    <h3>Эко-интерьер с элементами лофт</h3>
+                    <p>Авторский надзор, изготовление мебели на заказ, полная комплектация и декор.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="30" y="35" width="20" height="25" rx="4" fill="#C49A6C" /><rect x="20" y="60" width="40" height="8" fill="#2C2B28"/></svg>
+                </div>
+                <div class="project-info">
+                    <div class="project-cat">Дизайн-проект студии 45 м²</div>
+                    <h3>Умная эргономика</h3>
+                    <p>Трансформируемая мебель, комплектация, визуализация и контроль строителей.</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px;">
+            <a href="#contact" class="btn btn-outline">→ Запросить полное портфолио и резюме</a>
+        </div>
+    </div>
+</div>
+
+<!-- Постоянный поток клиентов, комплектация -->
+<div class="container" id="clients">
+    <div class="section">
+        <h2>Постоянный поток клиентов и экспертиза</h2>
+        <div class="client-flow">
+            <div class="flow-text">
+                <h3>📌 Дизайн + комплектация интерьеров «под ключ»</h3>
+                <p style="margin: 16px 0;">Благодаря системному подходу и рекомендациям, сформирована устойчивая база заказчиков: частные клиенты, девелоперы, мебельные компании. 85% новых проектов — от постоянных клиентов. Работаю с полным циклом: обмеры, планировка, 3D-визуализация, подбор отделки, чертежи мебели, авторский надзор и финальная комплектация.</p>
+                <p>✅ Готов к сотрудничеству с производителями диванов, мебельными фабриками и дизайн-студиями.<br>✅ Индивидуальный подход к каждому проекту, соблюдение сроков и бюджета.</p>
+            </div>
+            <div class="flow-highlight">
+                <div class="stat-number" style="font-size: 2.4rem;">100%</div>
+                <p style="font-weight: 500; margin: 8px 0;">загрузка в долгосрочных контрактах</p>
+                <hr style="margin: 16px 0; border-color:#e2d6cb;">
+                <div class="stat-number" style="font-size: 2rem;">12+</div>
+                <p>актуальных проектов в работе ежемесячно</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Контакты и призыв к сотрудничеству -->
+<div class="container" id="contact">
+    <div class="section">
+        <h2>Готов к сотрудничеству</h2>
+        <div class="contact-area">
+            <div>
+                <p style="font-size: 1.1rem; margin-bottom: 24px;">Обсудим ваш проект, дизайн интерьера или комплектацию. Предоставлю портфолио с реальными кейсами и резюме по запросу.</p>
+                <div class="contact-buttons">
+                    <a href="mailto:decoreodizain@gmail.com" class="btn">decoreodizain@gmail.com</a>
+                    <a href="tel:+79099148793" class="btn btn-outline">+7 909 914-87-93</a>
+                </div>
+                <div style="margin-top: 32px;">
+                    <p><strong>📱 Telegram / WhatsApp:</strong> +7 909 914-87-93 (предпочтительный способ связи)</p>
+                    <p><strong>📍 Регион работы:</strong> Москва, Московская область, онлайн-сопровождение по всей РФ.</p>
+                </div>
+            </div>
+            <div style="background: #2c2b28; padding: 28px; border-radius: 32px; color: white; min-width: 220px;">
+                <div style="font-weight: 600; margin-bottom: 12px;">📄 Резюме и портфолио</div>
+                <p style="font-size: 0.9rem; margin: 12px 0;">Отправлю подборку проектов и CV по запросу на почту или в мессенджер.</p>
+                <div style="margin-top: 16px;">
+                    <a href="#contact" onclick="copyContacts()" style="color:#c49a6c; font-weight: 500;">Скопировать контакты →</a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px; background: #F9F6F0; border-radius: 32px; padding: 28px; text-align: center;">
+            <p style="font-size: 0.95rem;">🔹 Работаю как с частными заказчиками, так и с производителями мебели. Комплектация интерьеров, авторский надзор, поставка.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Белых Юрий — Дизайнер интерьеров и комплектация | © 2026 | Постоянный поток клиентов, индивидуальный подход</p>
+        <p style="margin-top: 12px;">Дизайн интерьеров | Разработка мебели | Комплектация | Авторский надзор</p>
+    </div>
+</footer>
+
+<script>
+    // Аватарка: загрузка фото
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarImg = document.getElementById('avatarImg');
+    const avatarPlaceholder = document.getElementById('avatarPlaceholder');
+    const avatarContainer = document.getElementById('avatarContainer');
+
+    avatarInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file && (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                avatarImg.src = e.target.result;
+                avatarImg.style.display = 'block';
+                avatarPlaceholder.style.display = 'none';
+                // сохраняем в localStorage, чтобы при перезагрузке фото оставалось
+                localStorage.setItem('userAvatar', e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Пожалуйста, выберите изображение в формате JPEG или PNG');
+        }
+    });
+
+    // загружаем сохранённую аватарку из localStorage
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+        avatarImg.src = savedAvatar;
+        avatarImg.style.display = 'block';
+        avatarPlaceholder.style.display = 'none';
+    }
+
+    // функция копирования контактов
+    window.copyContacts = function() {
+        const contactText = "Белых Юрий, email: decoreodizain@gmail.com, телефон: +7 909 914-87-93";
+        navigator.clipboard.writeText(contactText).then(() => {
+            alert("Контакты скопированы: decoreodizain@gmail.com , +7 909 914-87-93");
+        }).catch(() => {
+            alert("Скопируйте контакты вручную");
+        });
+    }
+
+    // плавный скролл
+    document.querySelectorAll('.nav-links a, .btn[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
